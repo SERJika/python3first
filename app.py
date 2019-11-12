@@ -245,5 +245,7 @@ def page_not_found(error):
     return page_404
 
 
-app.run("0.0.0.0", 8000)  # запустим сервер на 8000 порту!
+# app.run("0.0.0.0", 8000)  # запустим сервер на 8000 порту!
+if __name__ == '__main__':
+    app.run()
 
