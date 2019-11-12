@@ -1,0 +1,54 @@
+{% extends 'index.html' %}
+
+{% block main %}
+
+            <section class="section">
+                <div class="container">
+                    <h1 class="h1 title front-intro-title">Как проводить сделки с&nbsp;недвижимостью</h1>
+					<div class="row">
+						<div class="col-12 col-md-6">
+							<p class="text-section front-intro-text">Если вы пришли на наш сайт, значит, возможно, вы интересуетесь информацией о том, как проводить сделки с недвижимостью, какие «подводные камни» можно встретить и что нужно знать, чтобы провести сделку макимально безопасно и комфортно. Сайт выполнен как каталог видео о сделках с недвижимостью.</p>
+                            <div class="front-intro-btn-bl"><a><span class="btn btn-medium btn-azure front-intro-btn">Подробнее о проекте</span></a></div>
+						</div>
+						<div class="col-12 col-md-6">
+							<img class="img front-intro-img" src="{{ intro_img_url|e }}">
+						</div>
+					</div>
+                </div>
+            </section>
+            <section class="section front-tags-section">
+                <div class="container">
+                    <h2 class="h2 title front-tags">Теги</h2>
+                    <p class="front-tags-text">Для поиска нужного видео вы можете воспользоваться тегами</p>
+					<div class="front-tags">
+						{% for key, val in tags.items() %}
+                        <a href="/tags/{{ key|e }}"><span class="btn btn-text btn-text-azure tag-btn">#{{ val.title|e }}</span></a>
+						{% endfor %}
+					</div>
+                </div>
+            </section>
+			<section class="section front-playlists-section">
+                <div class="container">
+                    <h2 class="h2 title front-playlists">Плейлисты</h2>
+                    <p class="front-playlists-text">Для поиска нужного видео вы можете воспользоваться плейлистами</p>
+					<ul class="front-playlists-list">
+						{% for key, val in playlists.items() %}
+						    <li class="items front-playlists-item front-playlists-btn-bl"><a href="/playlists/{{ key|e }}"><span class="btn btn-azure-link playlists-btn">{{ val|e }}</span></a></li>
+						{% endfor %}
+					</ul>
+					<div class="front-playlists-btn-bl"><a href="/playlists"><span class="btn btn-small btn-azure front-playlists-btn">Все&nbsp;плейлисты</span></a></div>
+                </div>
+            </section>
+			<section class="section front-gratitudes-section">
+                <div class="container">
+                    <h2 class="h2 title front-gratitudes-title">Благодарности</h2>
+					<div class="row front-gratitudes-text-bl">
+						<p class="col-12 front-gratitudes-text">Автор проекта выражает благодарность Глебу Кушедову и его коллегам за организацию обучающего курса и помощи в реализации данного проекта!</span></p>
+					    <p class="col-12 front-gratitudes-text">Спасибо!</p>
+						<p class="col-6 front-gratitudes-text author-date">11 ноября 2019 г.</p>
+						<p class="col-6 front-gratitudes-text author-sign">Сергей</p>
+					</div>
+                </div>
+            </section>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+
+{% block main %}
+
+        <section class="section">
+            <div class="container">
+	            <h1>Видео «{{ videos[id].title|e }}»</h1>
+                <div class="mt-3 mb-3">Теги:
+                    {% for key, val in tags.items() %}
+                    <a href="/tags/{{ key|e }}"><span class="btn btn-text btn-text-azure">#{{ val|e }}</span></a>
+                    {% endfor %}
+                </div>
+	            <iframe width="860" height="490" src="https://www.youtube.com/embed/{{ videos[id].url|e }}" frameborder="0" allow="picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </section>
+
+{% endblock %}
+

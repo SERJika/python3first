@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+
+{% block main %}
+
+        <section class="section">
+            <div class="container">
+	            <h1>Плейлист «{{ playlists.title|e }}»</h1>
+	            <ul class="playlists-list">
+					{% for number in playlists.videos %}
+					<li class="playlists-item">
+						<a href="/videos/{{ number|e }}" class="playlists-link"><span class="btn btn-text">{{ videos[number].title|e }}</span></a>
+					</li>
+					{% endfor %}
+				</ul>
+            </div>
+        </section>
+
+{% endblock %}

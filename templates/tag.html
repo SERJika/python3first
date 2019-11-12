@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+
+{% block main %}
+
+        <section class="section">
+            <div class="container">
+	            <h1>Видео по тегу «{{ tags['title']|e }}»</h1>
+	            <ul class="playlists-list">
+					{% for id in tags['videos'] %}
+					<li class="playlists-item">
+						<a href="/videos/{{ id|e }}" class="playlists-link"><span class="btn btn-text">{{ videos[id].title|e }}</span></a>
+					</li>
+					{% endfor %}
+				</ul>
+            </div>
+        </section>
+
+{% endblock %}
