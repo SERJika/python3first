@@ -132,7 +132,7 @@ for key in playlists.keys():
 
 @app.route('/')
 def main():
-    return page_index = render_template("main.html",
+    return render_template("main.html",
         menu=['active','','',''],
         favicon="static/img/favicon.ico",
         logo_url="static/img/logo.png",
@@ -144,7 +144,7 @@ def main():
 
 @app.route('/about/')
 def about():
-    return page_about = render_template("about.html",
+    return render_template("about.html",
         menu=['','active','',''],
         favicon="static/img/favicon.ico",
         logo_url="static/img/logo.png",
@@ -156,7 +156,7 @@ def about():
 
 @app.route('/contacts/')
 def contacts():
-    return page_contacts = render_template("contacts.html",
+    return render_template("contacts.html",
         menu=['','','','active'],
         favicon="static/img/favicon.ico",
         logo_url="static/img/logo.png",
@@ -167,7 +167,7 @@ def contacts():
 
 @app.route('/videos/<id>')
 def videos_page(id):
-    return page_video = render_template("video.html",
+    return render_template("video.html",
         menu=['', '', '', ''],
         favicon="static/img/favicon.ico",
         logo_url="static/img/logo.png",
@@ -179,7 +179,7 @@ def videos_page(id):
 
 @app.route('/tags/<tag>')
 def thetag(tag):
-    return page_tag = render_template("tag.html",
+    return render_template("tag.html",
         menu=['', '', 'active', ''],
         favicon="static/img/favicon.ico",
         logo_url="static/img/logo.png",
@@ -190,7 +190,7 @@ def thetag(tag):
 
 @app.route('/playlists/')
 def playlist():
-    return page_playlists = render_template("playlists.html",
+    return render_template("playlists.html",
         menu=['', '', 'active', ''],
         favicon="static/img/favicon.ico",
         logo_url="static/img/logo.png",
@@ -201,7 +201,7 @@ def playlist():
 
 @app.route('/playlists/<list>')
 def theplaylist(list):
-    return page_playlist = render_template("playlist.html",
+    return render_template("playlist.html",
         menu=['', '', 'active', ''],
         favicon="static/img/favicon.ico",
         logo_url="static/img/logo.png",
@@ -213,7 +213,7 @@ def theplaylist(list):
 
 @app.errorhandler(404)
 def page_not_found(error):
-    return page_404 = render_template("404.html",
+    return render_template("404.html",
         menu=['','','',''],
         favicon="static/img/favicon.ico",
         logo_url="static/img/logo.png",
