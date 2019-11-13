@@ -1,14 +1,9 @@
-from flask import Flask  # сперва подключим модуль
-from flask import request
-from flask import render_template # подключаем render_template, который включает функции для Jinja
-# можно так: from flask import Flask, render_template # подключаем render_template, который включает функции для Jinja
+from flask import Flask, request, render_template # render_template, который включает функции для Jinja
 import datetime
 
-now = datetime.datetime.now()
-
-
-
 app = Flask(__name__)  # объявим экземпляр фласка
+
+now = datetime.datetime.now()
 
 videos = [
     {
@@ -100,12 +95,14 @@ tags = {
         "videos": [3, 4, 5]
     },
 }
+
 video_tags = {}
 for i in range(len(videos)):
     video_tags[i] = {}
     for key, val in tags.items():
         if i in val['videos'] and val['title'] not in video_tags:
             video_tags[i].update({key:val['title']})
+
 playlists = {
     "estate_sale": {
         "title"  : "О продаже недвижимости",
@@ -124,6 +121,7 @@ playlists = {
         "videos": [8, 9, 10, 11, 12]
     },
 }
+
 playlists_first_els = {}
 plist_counter = 0
 for key in playlists.keys():
@@ -132,14 +130,9 @@ for key in playlists.keys():
         playlists_first_els[key] = plist['title']
         plist_counter += 1
 
-
-
 @app.route('/')
-# def template():
-#    output = render_template("test.html", name="Alex", place="Lab")  # рендерим шаблон
-#    return output  # возвращаем то, что отрендерилось
 def main():
-    page_index = render_template("main.html",
+    return page_index = render_template("main.html",
         menu=['active','','',''],
         favicon="static/img/favicon.ico",
         logo_url="static/img/logo.png",
@@ -148,12 +141,10 @@ def main():
         intro_img_url="static/img/house-care.jpg",
         now_year=now.year,
         dev_name='serjica')
-    return page_index
-
 
 @app.route('/about/')
 def about():
-    page_about = render_template("about.html",
+    return page_about = render_template("about.html",
         menu=['','active','',''],
         favicon="static/img/favicon.ico",
         logo_url="static/img/logo.png",
@@ -162,12 +153,10 @@ def about():
         intro_img_url="static/img/house-care.jpg",
         now_year=now.year,
         dev_name='serjica')
-    return page_about
-
 
 @app.route('/contacts/')
 def contacts():
-    page_contacts = render_template("contacts.html",
+    return page_contacts = render_template("contacts.html",
         menu=['','','','active'],
         favicon="static/img/favicon.ico",
         logo_url="static/img/logo.png",
@@ -175,12 +164,10 @@ def contacts():
         playlists=playlists,
         now_year=now.year,
         dev_name='serjica')
-    return page_contacts
-
 
 @app.route('/videos/<id>')
 def videos_page(id):
-    page_video = render_template("video.html",
+    return page_video = render_template("video.html",
         menu=['', '', '', ''],
         favicon="static/img/favicon.ico",
         logo_url="static/img/logo.png",
@@ -189,12 +176,10 @@ def videos_page(id):
         id=int(id),
         now_year=now.year,
         dev_name='serjica')
-    return page_video
-
 
 @app.route('/tags/<tag>')
 def thetag(tag):
-    page_tag = render_template("tag.html",
+    return page_tag = render_template("tag.html",
         menu=['', '', 'active', ''],
         favicon="static/img/favicon.ico",
         logo_url="static/img/logo.png",
@@ -202,12 +187,10 @@ def thetag(tag):
         videos=videos,
         now_year=now.year,
         dev_name='serjica')
-    return page_tag
-
 
 @app.route('/playlists/')
 def playlist():
-    page_playlists = render_template("playlists.html",
+    return page_playlists = render_template("playlists.html",
         menu=['', '', 'active', ''],
         favicon="static/img/favicon.ico",
         logo_url="static/img/logo.png",
@@ -215,12 +198,10 @@ def playlist():
         playlists=playlists,
         now_year=now.year,
         dev_name='serjica')
-    return page_playlists
-
 
 @app.route('/playlists/<list>')
 def theplaylist(list):
-    page_playlist = render_template("playlist.html",
+    return page_playlist = render_template("playlist.html",
         menu=['', '', 'active', ''],
         favicon="static/img/favicon.ico",
         logo_url="static/img/logo.png",
@@ -229,12 +210,10 @@ def theplaylist(list):
         videos=videos,
         now_year=now.year,
         dev_name='serjica')
-    return page_playlist
-
 
 @app.errorhandler(404)
 def page_not_found(error):
-    page_404 = render_template("404.html",
+    return page_404 = render_template("404.html",
         menu=['','','',''],
         favicon="static/img/favicon.ico",
         logo_url="static/img/logo.png",
@@ -242,10 +221,6 @@ def page_not_found(error):
         playlists=playlists,
         now_year=now.year,
         dev_name='serjica')
-    return page_404
 
-
-# app.run("0.0.0.0", 8000)  # запустим сервер на 8000 порту!
 if __name__ == '__main__':
     app.run()
-
